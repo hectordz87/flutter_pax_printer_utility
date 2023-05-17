@@ -40,6 +40,11 @@ class FlutterPaxPrinterUtility {
     }
   }
 
+  static Future<String?> get getStatusMsg async {
+    final String? status = await _channel.invokeMethod('getStatus');
+    return status;
+  }
+
   static Future<String?> printReceipt(String text) async {
     final String? response = await _channel
         .invokeMethod('printReceipt', {"text": text.replaceAll("\r", "")});
